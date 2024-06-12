@@ -1,5 +1,5 @@
 # CounterStrike2Aim
-since vac does check opening handle to game from other processes and memory places where that memory should be untouched, using this will get you probably insta banned (unless, if you know what you are doing, you can bypass it with just few steps). so only for educational purposes, not responsible for any bans on your accounts
+since vac does check opening handle to game from other processes and memory places where that memory should be untouched, using this will get you probably insta banned (unless, if you know what you are doing, you can bypass it with just few steps, for exampl. handle hijacking + kernel read/write). so only for educational purposes, not responsible for any bans on your accounts
 
 ## Credits
 
