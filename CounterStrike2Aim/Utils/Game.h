@@ -18,16 +18,18 @@ namespace Game {
 	extern uintptr_t client;
 	extern uintptr_t localPlayer;
 	extern uintptr_t entityList;
-	extern std::vector<uintptr_t> entities;
 
 	namespace LocalPlayer {
+		extern uintptr_t localPlayerIndex;
 		Vector3 getEyePosition();
 		Vector3 getViewAngles();
+		uintptr_t getLocalPlayerIndex();
 	};
 
 	namespace Entity {
 		Vector3 getPosition(uintptr_t entity);
 		Vector3 getPosition(uintptr_t entity, int bone);
 		int getHealth(uintptr_t entity);
+		bool isVisible(uintptr_t pCSPPlayerPawn);
 	};
 };

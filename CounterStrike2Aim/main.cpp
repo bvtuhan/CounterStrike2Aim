@@ -35,6 +35,8 @@ int main()
         std::cout << "Player Position: x: " << playerPosition.x << " y: " << playerPosition.y << " z: " << playerPosition.z << std::endl;
     }
 
+    std::cout << "LocalPlayerIndex : " << Game::LocalPlayer::localPlayerIndex << std::endl;
+
     while (31)
     {
         if (GetAsyncKeyState(VK_XBUTTON1))

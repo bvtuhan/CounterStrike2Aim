@@ -40,11 +40,7 @@ float Vector3::yawAngle(const Vector3& other) const {
 }
 
 float Vector3::pitchAngle(const Vector3& other) const {
-	std::cout << "Other: " << other.x << " " << other.y << " " << other.z << std::endl;
-	std::cout << "This: " << this->x << " " << this->y << " " << this->z << std::endl;
-	float horizontalDistance = sqrtf(pow(other.x - this->x, 2) + pow(other.y - this->y, 2));
-	float verticalDistance = other.z - this->z;
-	return atan2f(-verticalDistance, horizontalDistance) * (180 / M_PI);
+	return atan2f(-(other.z - this->z), sqrtf(pow(other.x - this->x, 2) + pow(other.y - this->y, 2))) * (180 / M_PI);
 }
 
 
