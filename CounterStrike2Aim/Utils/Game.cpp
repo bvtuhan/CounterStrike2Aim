@@ -107,7 +107,7 @@ int Game::Entity::getHealth(uintptr_t entity)
 
 bool Game::Entity::isVisible(uintptr_t pCSPPlayerPawn)
 {
-    uintptr_t state = RPM1<uintptr_t>(pCSPPlayerPawn + cs2_dumper::schemas::client_dll::EntitySpottedState_t::m_bSpottedByMask, Game::handle);
+    uintptr_t state = RPM1<uintptr_t>(pCSPPlayerPawn + cs2_dumper::schemas::client_dll::C_CSPlayerPawn::m_entitySpottedState + cs2_dumper::schemas::client_dll::EntitySpottedState_t::m_bSpottedByMask, Game::handle);
     return state & (1 << Game::LocalPlayer::localPlayerIndex - 1);
 }
 

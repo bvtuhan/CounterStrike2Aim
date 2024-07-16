@@ -42,9 +42,9 @@ Vector3 getClosestEntity()
 
         Vector3 playerPosition = Game::Entity::getPosition(player,6); // 6 is for head position
         int health = Game::Entity::getHealth(player);
-        if (first || ((health > 0 || health <= 100) && playerPosition.magnitude(localPlayerPosition) < closestEnemy.magnitude(localPlayerPosition)))
+        if (first || ( (health > 0 || health <= 100) && playerPosition.magnitude(localPlayerPosition) < closestEnemy.magnitude(localPlayerPosition)))
         {
-            //if(!Game::Entity::isVisible(player)) continue;  // Check if the player is visible (not behind a wall)
+            if(!Game::Entity::isVisible(player)) continue;  // Check if the player is visible (not behind a wall)
             //FOV CHECK !
             float pitch = localPlayerPosition.pitchAngle(playerPosition);
             float yaw = localPlayerPosition.yawAngle(playerPosition);

@@ -44,7 +44,7 @@ int main()
             break;
         }
 
-        while (GetAsyncKeyState(VK_XBUTTON2))
+        while (GetAsyncKeyState(VK_MENU))
         {
             Vector3 closestEnemy = getClosestEntity();
             std::cout << "Closest Enemey is in" << " x: " << closestEnemy.x << " y: " << closestEnemy.y << std::endl;
