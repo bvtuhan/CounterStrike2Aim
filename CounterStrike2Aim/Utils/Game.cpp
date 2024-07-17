@@ -100,6 +100,11 @@ uintptr_t Game::LocalPlayer::getLocalPlayerIndex()
     }
 }
 
+int Game::LocalPlayer::getLocalPlayerTeam()
+{
+    return RPM1<int>(Game::localPlayer + cs2_dumper::schemas::client_dll::C_BaseEntity::m_iTeamNum, Game::handle);
+}
+
 int Game::Entity::getHealth(uintptr_t entity)
 {
     return RPM1<int>(entity + cs2_dumper::schemas::client_dll::C_BaseEntity::m_iHealth, Game::handle);
@@ -109,6 +114,16 @@ bool Game::Entity::isVisible(uintptr_t pCSPPlayerPawn)
 {
     uintptr_t state = RPM1<uintptr_t>(pCSPPlayerPawn + cs2_dumper::schemas::client_dll::C_CSPlayerPawn::m_entitySpottedState + cs2_dumper::schemas::client_dll::EntitySpottedState_t::m_bSpottedByMask, Game::handle);
     return state & (1 << Game::LocalPlayer::localPlayerIndex - 1);
+}
+
+int Game::Entity::getEntityTeam(uintptr_t pCSPPlayerPawn)
+{
+    return RPM1<int>(pCSPPlayerPawn + cs2_dumper::schemas::client_dll::C_BaseEntity::m_iTeamNum, Game::handle);
+}
+
+bool Game::Entity::entityIsTeammate(uintptr_t pCSPPlayerPawn)
+{
+    return Game::LocalPlayer::getLocalPlayerTeam() == Game::Entity::getEntityTeam(pCSPPlayerPawn);
 }
 
 

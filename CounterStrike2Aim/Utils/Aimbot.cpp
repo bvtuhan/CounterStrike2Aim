@@ -45,6 +45,7 @@ Vector3 getClosestEntity()
         if (first || ( (health > 0 || health <= 100) && playerPosition.magnitude(localPlayerPosition) < closestEnemy.magnitude(localPlayerPosition)))
         {
             if(!Game::Entity::isVisible(player)) continue;  // Check if the player is visible (not behind a wall)
+            if(Game::Entity::entityIsTeammate(player)) continue; // Check if the player is an enemy (not a teammate)
             //FOV CHECK !
             float pitch = localPlayerPosition.pitchAngle(playerPosition);
             float yaw = localPlayerPosition.yawAngle(playerPosition);

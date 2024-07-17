@@ -24,6 +24,7 @@ namespace Game {
 		Vector3 getEyePosition();
 		Vector3 getViewAngles();
 		uintptr_t getLocalPlayerIndex();
+		int getLocalPlayerTeam();
 	};
 
 	namespace Entity {
@@ -31,5 +32,7 @@ namespace Game {
 		Vector3 getPosition(uintptr_t entity, int bone);
 		int getHealth(uintptr_t entity);
 		bool isVisible(uintptr_t pCSPPlayerPawn);
+		int getEntityTeam(uintptr_t pCSPPlayerPawn);
+		bool entityIsTeammate(uintptr_t entity);
 	};
 };
