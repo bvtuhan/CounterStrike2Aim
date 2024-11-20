@@ -15,15 +15,9 @@
 template<typename T>
 T RPM1(const uintptr_t address, HANDLE handle) noexcept
 {
-    T rpmBuffer;
+    T rpmBuffer{};
     ReadProcessMemory(handle, reinterpret_cast<LPCVOID>(address), &rpmBuffer, sizeof(T), nullptr);
     return rpmBuffer;
-}
-
-void SignalHandler(int signal)
-{
-    printf("Signal %d", signal);
-    throw "!Access Violation!";
 }
 
 namespace Game {
@@ -62,7 +56,6 @@ std::vector<uintptr_t> Game::getEntities() {
 Vector3 Game::LocalPlayer::getEyePosition()
 {
     Vector3 origin = RPM1<Vector3>(Game::localPlayer + cs2_dumper::schemas::client_dll::C_BasePlayerPawn::m_vOldOrigin, Game::handle);
-    std::cout << "Origin: " << origin.x << " " << origin.y << " " << origin.z << std::endl;
     Vector3 eye = RPM1<Vector3>(Game::localPlayer + cs2_dumper::schemas::client_dll::C_BaseModelEntity::m_vecViewOffset, Game::handle);
     return origin + eye;
 }

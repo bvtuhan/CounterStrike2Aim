@@ -40,7 +40,11 @@ float Vector3::yawAngle(const Vector3& other) const {
 }
 
 float Vector3::pitchAngle(const Vector3& other) const {
-	return atan2f(-(other.z - this->z), sqrtf(pow(other.x - this->x, 2) + pow(other.y - this->y, 2))) * (180 / M_PI);
+	return asinf(-(other.z - this->z) / this->magnitude(other)) * (180 / M_PI);
+
+	//or use this
+	//return atan2f(-(other.z - this->z), sqrtf(pow(other.x - this->x, 2) + pow(other.y - this->y, 2))) * (180 / M_PI);
+
 }
 
 

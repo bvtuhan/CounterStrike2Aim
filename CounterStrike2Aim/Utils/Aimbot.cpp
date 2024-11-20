@@ -4,7 +4,7 @@
 template<typename T>
 T RPM1(const uintptr_t address, HANDLE handle) noexcept
 {
-    T rpmBuffer;
+    T rpmBuffer{};
     ReadProcessMemory(handle, reinterpret_cast<LPCVOID>(address), &rpmBuffer, sizeof(T), nullptr);
     return rpmBuffer;
 }
@@ -24,7 +24,6 @@ void aim(Vector3 closestEnemy)
 
     //ADDING SMOOTHNESS
     Vector3 smoothAngles = viewAngles + delta * AIMSMOOTH;
-    std::cout << "Smooth Angles: " << smoothAngles.x << " " << smoothAngles.y << std::endl;
 
     WriteProcessMemory(Game::handle, reinterpret_cast<void*>(Game::client + cs2_dumper::offsets::client_dll::dwViewAngles), &smoothAngles, sizeof(smoothAngles), NULL);
 }
